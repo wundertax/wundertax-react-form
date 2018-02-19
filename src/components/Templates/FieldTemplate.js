@@ -2,9 +2,33 @@ import React from 'react';
 import { Container, Form, Label } from 'semantic-ui-react';
 
 
+function cleanBootstrapClasses(classNames) {
+  let response = classNames;
+  [ 'field', 'form-group'].forEach(function(element) {
+    response = response.replace(element, '');
+  });
+  return response;
+}
+
 function FieldTemplate(props) {
 
-  const { id, classNames, label, rawHelp, required, description, rawErrors, children } = props;
+  const {
+    id,
+    label,
+    children,
+    rawErrors,
+    rawHelp,
+    description,
+    hidden,
+    required,
+    displayLabel,
+  } = props;
+
+  const classNames = cleanBootstrapClasses(props.classNames);
+
+  if (hidden) {
+    return children;
+  }
   let errors = null;
   let help = null;
   if (rawHelp !== undefined) {
@@ -14,10 +38,10 @@ function FieldTemplate(props) {
     errors = <Label basic color='red' pointing='above'> { rawErrors.join(', ') } </Label>;
   }
   return (
-    <Form.Field classNames={classNames}>
-      <label htmlFor={id}>{label}{required ? "*" : null}</label>
-      { description }
-      <Container>{children}</Container>
+    <Form.Field className={classNames}>
+      { displayLabel && <label htmlFor={id}>{label}{required ? "*" : null}</label>}
+      { displayLabel && description ? description : null }
+      {children}
       { errors }
       { help }
     </Form.Field>

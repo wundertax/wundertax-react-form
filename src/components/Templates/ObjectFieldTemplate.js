@@ -1,15 +1,35 @@
-import React from 'react';
-import { Container } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Segment, Form } from 'semantic-ui-react';
 
-function ObjectFieldTemplate({ TitleField, properties, title, description }) {
-  return (
-    <Container>
+
+class FieldsList extends Component {
+  render() {
+    const properties = this.props.properties;
+    const inline = this.props.inline;
+    return (
+      <Segment.Group horizontal={inline} style={{ border: 'none', boxShadow: 'none' }}>
       {properties.map(prop => (
-        <Container key={prop.content.key}>
-          {prop.content}
-        </Container>
+        <Segment basic key={prop.content.key} style={{ border: 'none', boxShadow: 'none' }}>{prop.content}</Segment>
       ))}
-    </Container>
+      </Segment.Group>
+    );
+  }
+}
+
+
+function ObjectFieldTemplate(props) {
+  const { properties, uiSchema } = props;
+  const uiOptions = uiSchema && uiSchema["ui:options"] ? uiSchema["ui:options"] : undefined;
+  const inline = uiOptions && uiOptions["inline"] === true ? true : undefined;
+  if (inline !== undefined) {
+    return (
+      <Form.Group inline widths={16}>
+        <FieldsList properties={properties} inline/>
+      </Form.Group>
+    );
+  }
+  return (
+    <FieldsList properties={properties} />
   );
 }
 

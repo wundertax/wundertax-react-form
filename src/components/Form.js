@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { fields } from "./Fields";
 import { widgets } from "./Widgets";
 import { FieldTemplate, ObjectFieldTemplate } from "./Templates";
@@ -26,15 +26,11 @@ class WunderForm extends Component {
     const props = this.props;
     const children = props.children;
     return (
-        <Form
-          {...props}
-        >
+        <Form {...props}>
           {children ? (
             children
           ) : (
-            <Container>
-              <Button type="submit">Submit</Button>
-            </Container>
+            <Button type="submit">Submit</Button>
           )}
         </Form>
     );

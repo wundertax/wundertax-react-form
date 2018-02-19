@@ -22,9 +22,9 @@ function CheckboxWidget(props) {
       <Checkbox 
         id={id} 
         label={label} 
-        value={typeof value === "undefined" ? false : true}
+        // value={typeof value === "undefined" ? false : true}
         defaultChecked={typeof value === "undefined" ? false : value}
-        required={required}
+        required={typeof required === "undefined" ? false : true}
         disabled={disabled || readonly}
         autoFocus={autofocus}
         onChange={event => onChange(event.target.checked)}
