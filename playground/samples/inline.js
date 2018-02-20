@@ -1,15 +1,15 @@
 module.exports = {
   schema: {
     type: "object",
-    required: ["Email"],
+    required: ["workEmail"],
     properties: {
       workEmail: {
         type: "string",
-        title: "Work Email",
+        title: "Work Email"
       },
       personalEmail: {
         type: "string",
-        title: "Personal Email",
+        title: "Personal Email"
       }
     },
   },
@@ -17,11 +17,13 @@ module.exports = {
     "ui:options": {
       "inline": true
     },
+    workEmail: {
+      "ui:widget": "email"
+    },
     personalEmail: {
       "ui:widget": "email",
-    },
-    workEmail: {
-      "ui:widget": "email",
+      "ui:title": "Email pessoal",
+      "ui:description": "Adding a text here to show how text breaks"
     }
   },
   formData: {

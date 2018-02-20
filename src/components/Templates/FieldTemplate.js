@@ -4,8 +4,13 @@ import { Container, Form, Label } from 'semantic-ui-react';
 
 function cleanBootstrapClasses(classNames) {
   let response = classNames;
-  [ 'field', 'form-group'].forEach(function(element) {
-    response = response.replace(element, '');
+  const replacements = [
+    ['field', ''],
+    ['form-group', ''],
+    ['has-error', 'error']
+  ];
+  replacements.forEach(function(key, value) {
+    response = response.replace(key, value);
   });
   return response;
 }
@@ -24,7 +29,7 @@ function FieldTemplate(props) {
     displayLabel,
   } = props;
 
-  const classNames = cleanBootstrapClasses(props.classNames);
+  let classNames = cleanBootstrapClasses(props.classNames);
 
   if (hidden) {
     return children;
@@ -36,6 +41,7 @@ function FieldTemplate(props) {
   }
   if (rawErrors !== undefined) {
     errors = <Label basic color='red' pointing='above'> { rawErrors.join(', ') } </Label>;
+    classNames = classNames.replace('has-error', 'error');
   }
   return (
     <Form.Field className={classNames}>
