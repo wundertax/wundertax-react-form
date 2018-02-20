@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
 import { fields } from "./Fields";
 import { widgets } from "./Widgets";
-import { FieldTemplate, ObjectFieldTemplate } from "./Templates";
+import { ArrayFieldTemplate, FieldTemplate, ObjectFieldTemplate } from "./Templates";
 import Form from "react-jsonschema-form";
 
 
@@ -18,6 +18,7 @@ class WunderForm extends Component {
     widgets: widgets,
     showErrorList: false,
     className: 'ui form',
+    ArrayFieldTemplate: ArrayFieldTemplate,
     FieldTemplate: FieldTemplate,
     ObjectFieldTemplate: ObjectFieldTemplate,
   };

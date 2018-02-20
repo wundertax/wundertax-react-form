@@ -19,6 +19,11 @@ const liveValidateSchema = {
   title: "Live validation"
 };
 
+const displayJsonSchema = {
+  type: "boolean",
+  title: "Display Editors?"
+};
+
 const cmOptions = {
   theme: "default",
   height: "auto",
@@ -124,7 +129,12 @@ class App extends Component {
       editor: "default",
       theme: "default",
       liveValidate: true,
+      displayJson: true,
       shareURL: null,
+      columns: {
+        editors: 10,
+        form: 6
+      }
     };
   }
 
@@ -160,6 +170,10 @@ class App extends Component {
 
   onFormDataEdited = formData => this.setState({ formData, shareURL: null });
 
+  setDisplayJsonSchema = ({ formData }) => this.setState(
+    { displayJson: formData, columns: { editors: formData ? 10 : 0, form: formData ? 6 : 16 } }
+  );
+
   setLiveValidate = ({ formData }) => this.setState({ liveValidate: formData });
 
   onFormDataChange = ({ formData }) => this.setState({ formData, shareURL: null });
@@ -171,6 +185,7 @@ class App extends Component {
       uiSchema,
       formData,
       liveValidate,
+      displayJson,
       validate,
       editor,
       transformErrors,
@@ -191,50 +206,64 @@ class App extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column width={16} style={{ marginTop: '2em' }}>
+          <Grid.Column width={8} style={{ marginTop: '2em' }}>
             <Form
               liveValidate={false}
+              idPrefix={"validation_form"}
               schema={liveValidateSchema}
               formData={liveValidate}
               onChange={this.setLiveValidate}>
               <div />
             </Form>
           </Grid.Column>
+          <Grid.Column width={8} floated='right' style={{ marginTop: '2em' }}>
+            <Form
+              liveValidate={false}
+              idPrefix={"editors_form"}
+              schema={displayJsonSchema}
+              formData={displayJson}
+              onChange={this.setDisplayJsonSchema}>
+              <div />
+            </Form>
+          </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={16}>
-          <Grid.Column width={10}>
-            <Grid stackable>
-              <Grid.Row>
-                <Grid.Column width={16}>
-                  <Editor
-                    title="formData"
-                    theme={editor}
-                    code={toJson(formData)}
-                    onChange={this.onFormDataEdited}
-                  />
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column width={8}>
-                  <Editor
-                    title="JSONSchema"
-                    theme={editor}
-                    code={toJson(schema)}
-                    onChange={this.onSchemaEdited}
-                  />
-                </Grid.Column>
-                <Grid.Column width={8}>
-                  <Editor
-                    title="UISchema"
-                    theme={editor}
-                    code={toJson(uiSchema)}
-                    onChange={this.onUISchemaEdited}
-                  />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Grid.Column>
-          <Grid.Column floated='right' width={6}>
+          { this.state.displayJson && (
+            <Grid.Column width={ this.state.columns.editors }>
+              <Grid stackable>
+                <Grid.Row>
+                  <Grid.Column width={16}>
+                    <Editor
+                      title="formData"
+                      theme={editor}
+                      code={toJson(formData)}
+                      onChange={this.onFormDataEdited}
+                    />
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column width={8}>
+                    <Editor
+                      title="JSONSchema"
+                      theme={editor}
+                      code={toJson(schema)}
+                      onChange={this.onSchemaEdited}
+                    />
+                  </Grid.Column>
+                  <Grid.Column width={8}>
+                    <Editor
+                      title="UISchema"
+                      theme={editor}
+                      code={toJson(uiSchema)}
+                      onChange={this.onUISchemaEdited}
+                    />
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Grid.Column>
+            )
+          }
+          <Grid.Column floated='right' width={ this.state.columns.form }>
           {this.state.form && (
             <Form
               liveValidate={liveValidate}

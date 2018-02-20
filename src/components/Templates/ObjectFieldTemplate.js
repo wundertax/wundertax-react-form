@@ -21,15 +21,10 @@ function ObjectFieldTemplate(props) {
   const { properties, uiSchema } = props;
   const uiOptions = uiSchema && uiSchema["ui:options"] ? uiSchema["ui:options"] : undefined;
   const inline = uiOptions && uiOptions["inline"] === true ? true : undefined;
-  if (inline !== undefined) {
-    return (
-      <Form.Group inline widths={16}>
-        <FieldsList properties={properties} inline/>
-      </Form.Group>
-    );
-  }
   return (
-    <FieldsList properties={properties} />
+    <Form.Group inline={inline} widths={16}>
+      <FieldsList properties={properties} inline={inline} />
+    </Form.Group>
   );
 }
 
