@@ -23,7 +23,8 @@ module.exports = {
     personalEmail: {
       "ui:widget": "email",
       "ui:title": "Email pessoal",
-      "ui:description": "Adding a text here to show how text breaks"
+      "ui:description": "Adding a text here to show how text breaks",
+      "ui:icon": "envelope"
     }
   },
   formData: {
