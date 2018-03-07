@@ -3,7 +3,7 @@
   "description": "Opinionated packaging for react-jsonschema-form.",
   "private": false,
   "author": "tech@wundertax.de",
-  "version": "1.0.0a1",
+  "version": "1.0.0-a1",
   "scripts": {
     "build:readme": "toctoc README.md -w",
     "build:lib": "rimraf lib && cross-env NODE_ENV=production babel -d lib/ src/",
@@ -107,6 +107,7 @@
     "webpack-hot-middleware": "^2.13.2"
   },
   "directories": {
+    "lib": "lib",
     "test": "test"
   },
   "repository": {
@@ -120,5 +121,8 @@
     "semantic-ui"
   ],
   "license": "Apache-2.0",
-  "homepage": "https://github.com/wundertax/wundertax-react-form#readme"
+  "homepage": "https://github.com/wundertax/wundertax-react-form#readme",
+  "bugs": {
+    "url": "https://github.com/wundertax/wundertax-react-form/issues"
+  }
 }
