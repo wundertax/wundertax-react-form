@@ -14,11 +14,7 @@ const defaultConfig = {
 class IntlCurrencyInput extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      maskedValue: "0",
-    };
-
+    this.state = { maskedValue: "0" };
     this.handleFocus.bind(this);
   }
 
@@ -29,7 +25,7 @@ class IntlCurrencyInput extends Component {
   }
 
   componentDidMount() {
-    const value = this.props.defaultValue || 0;
+    const value = this.props.value || this.props.defaultValue || 0;
     this.setMaskedValue(value);
   }
 

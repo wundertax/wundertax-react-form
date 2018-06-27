@@ -95,5 +95,6 @@ module.exports = {
     bio: "Moving Making, one planet at the time.",
     password: "mars_or_die",
     country: "us",
+    amount: "42.12"
   },
 };
