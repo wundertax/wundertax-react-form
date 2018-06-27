@@ -17,6 +17,10 @@ module.exports = {
         type: "integer",
         title: "Age",
       },
+      accept: {
+        type: "boolean",
+        title: "Accept terms and conditions",
+      },
       date: {
         type: "string",
         title: "Date",
@@ -84,6 +88,12 @@ module.exports = {
     amount: {
       "ui:widget": "CurrencyWidget",
       "ui:currency": "USD",
+    },
+    accept: {
+      "ui:widget": "checkbox",
+      "ui:options": {
+        displayLabel: false,
+      },
     },
     telephone: {
       "ui:options": {

@@ -24,11 +24,18 @@ function FieldTemplate(props) {
     description,
     hidden,
     required,
-    displayLabel,
+    uiSchema,
   } = props;
 
   let classNames = cleanBootstrapClasses(props.classNames);
-
+  const uiOptions =
+    uiSchema && uiSchema.hasOwnProperty("ui:options")
+      ? uiSchema["ui:options"]
+      : undefined;
+  const displayLabel =
+    uiOptions && uiOptions.hasOwnProperty("displayLabel")
+      ? uiOptions["displayLabel"]
+      : props.displayLabel;
   if (hidden) {
     return children;
   }
@@ -50,8 +57,7 @@ function FieldTemplate(props) {
     <Form.Field className={classNames}>
       {displayLabel && (
         <label htmlFor={id}>
-          {label}
-          {required ? "*" : null}
+          {label} {required ? "*" : null}
         </label>
       )}
       {displayLabel && description ? description : null}
