@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Segment, Container, Form, Header } from "semantic-ui-react";
+import { Segment, Form, Header } from "semantic-ui-react";
 
 class FieldsList extends Component {
   render() {
@@ -32,7 +32,7 @@ function ObjectFieldTemplate(props) {
   const displayDescription =
     uiOptions && uiOptions["displayDescription"] === true ? true : false;
   return (
-    <Container>
+    <section>
       {displayTitle ? <Header>{props.title}</Header> : ""}
       {displayDescription ? (
         <Header.Subheader>{props.description}</Header.Subheader>
@@ -42,7 +42,7 @@ function ObjectFieldTemplate(props) {
       <Form.Group inline={inline} widths={16}>
         <FieldsList properties={properties} inline={inline} />
       </Form.Group>
-    </Container>
+    </section>
   );
 }
 
