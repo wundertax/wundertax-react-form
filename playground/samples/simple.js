@@ -20,7 +20,7 @@ module.exports = {
       date: {
         type: "string",
         title: "Date",
-        format: "date"
+        format: "date",
       },
       email: {
         type: "string",
@@ -51,6 +51,10 @@ module.exports = {
     },
   },
   uiSchema: {
+    "ui:options": {
+      displayTitle: true,
+      displayDescription: true,
+    },
     firstName: {
       "ui:autofocus": true,
       "ui:emptyValue": "",
@@ -75,11 +79,11 @@ module.exports = {
     },
     country: {
       "ui:widget": "CountryWidget",
-      "ui:placeholder": "Germany"
+      "ui:placeholder": "Germany",
     },
     amount: {
       "ui:widget": "CurrencyWidget",
-      "ui:currency": "USD"
+      "ui:currency": "USD",
     },
     telephone: {
       "ui:options": {
@@ -95,6 +99,6 @@ module.exports = {
     bio: "Moving Making, one planet at the time.",
     password: "mars_or_die",
     country: "us",
-    amount: "42.12"
+    amount: "42.12",
   },
 };
