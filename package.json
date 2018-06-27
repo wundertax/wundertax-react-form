@@ -3,7 +3,7 @@
   "description": "Opinionated packaging for react-jsonschema-form.",
   "private": false,
   "author": "tech@wundertax.de",
-  "version": "1.0.0-a1",
+  "version": "1.0.0-a2",
   "scripts": {
     "build:readme": "toctoc README.md -w",
     "build:lib": "rimraf lib && cross-env NODE_ENV=production babel -d lib/ src/",
