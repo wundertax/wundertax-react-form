@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { countryOptions } from "./common";
 import { asNumber } from "react-jsonschema-form/lib/utils";
-import { Select } from 'semantic-ui-react';
+import { Select } from "semantic-ui-react";
 
 function processValue({ type, items }, value) {
   if (value === "") {
@@ -63,7 +63,7 @@ function CountryWidget(props) {
       onChange={(e, { value }) => {
         onChange(processValue(schema, value));
       }}
-      />
+    />
   );
 }
 

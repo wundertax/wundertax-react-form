@@ -1,11 +1,11 @@
-import { default as BaseInput } from './BaseInput';
-import { default as CheckboxWidget } from './CheckboxWidget';
-import { default as CountryWidget } from './CountryWidget';
-import { default as CurrencyWidget } from './CurrencyWidget';
-import { default as EmailWidget } from './EmailWidget';
-import { default as SelectWidget } from './SelectWidget';
-import { default as TextWidget } from './TextWidget';
-import { default as TextareaWidget } from './TextareaWidget';
+import { default as BaseInput } from "./BaseInput";
+import { default as CheckboxWidget } from "./CheckboxWidget";
+import { default as CountryWidget } from "./CountryWidget";
+import { default as CurrencyWidget } from "./CurrencyWidget";
+import { default as EmailWidget } from "./EmailWidget";
+import { default as SelectWidget } from "./SelectWidget";
+import { default as TextWidget } from "./TextWidget";
+import { default as TextareaWidget } from "./TextareaWidget";
 
 export const widgets = {
   BaseInput: BaseInput,

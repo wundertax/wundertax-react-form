@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import cx from 'classnames';
-import { Label } from 'semantic-ui-react';
-import { formatCurrency, getSymbolFromCurrency } from './currency';
-import { useKeyOnly, useValueAndKey } from '../../lib';
+import cx from "classnames";
+import { Label } from "semantic-ui-react";
+import { formatCurrency, getSymbolFromCurrency } from "./currency";
+import { useKeyOnly, useValueAndKey } from "../../lib";
 import PropTypes from "prop-types";
 
-
 const defaultConfig = {
-  locale: 'en-US'
+  locale: "en-US",
 };
 
 class IntlCurrencyInput extends Component {
@@ -20,7 +19,11 @@ class IntlCurrencyInput extends Component {
 
   setMaskedValue(value = 0) {
     this.setState({
-      maskedValue: formatCurrency(value, this.props.config, this.props.currency),
+      maskedValue: formatCurrency(
+        value,
+        this.props.config,
+        this.props.currency
+      ),
     });
   }
 
@@ -31,7 +34,11 @@ class IntlCurrencyInput extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.currency !== this.props.currency) {
-      const [, maskedValue] = this.calculateValues(this.state.maskedValue, nextProps.config, nextProps.currency);
+      const [, maskedValue] = this.calculateValues(
+        this.state.maskedValue,
+        nextProps.config,
+        nextProps.currency
+      );
       this.setState({ maskedValue: maskedValue });
     }
   }
@@ -54,12 +61,19 @@ class IntlCurrencyInput extends Component {
   }
 
   updateValues(event) {
-    const [value, maskedValue] = this.calculateValues(event.target.value, this.props.config, this.props.currency);
+    const [value, maskedValue] = this.calculateValues(
+      event.target.value,
+      this.props.config,
+      this.props.currency
+    );
     if (!this.props.max || value <= this.props.max) {
       this.setState({ maskedValue });
       return [value, maskedValue];
     } else {
-      return [this.normalizeValue(this.state.maskedValue)/100, this.state.maskedValue];
+      return [
+        this.normalizeValue(this.state.maskedValue) / 100,
+        this.state.maskedValue,
+      ];
     }
   }
 
@@ -155,34 +169,36 @@ class IntlCurrencyInput extends Component {
       size,
       transparent,
     } = this.props;
-    const labelPosition = 'right';
+    const labelPosition = "right";
     const classes = cx(
-      'ui',
+      "ui",
       size,
-      useKeyOnly(disabled, 'disabled'),
-      useKeyOnly(error, 'error'),
-      useKeyOnly(fluid, 'fluid'),
-      useKeyOnly(focus, 'focus'),
-      useKeyOnly(inverted, 'inverted'),
-      useKeyOnly(loading, 'loading'),
-      useKeyOnly(transparent, 'transparent'),
-      useValueAndKey(actionPosition, 'action') || useKeyOnly(action, 'action'),
-      useValueAndKey(iconPosition, 'icon') || useKeyOnly(icon || loading, 'icon'),
-      useValueAndKey(labelPosition, 'labeled') || useKeyOnly(label, 'labeled'),
-      'input',
-      className,
+      useKeyOnly(disabled, "disabled"),
+      useKeyOnly(error, "error"),
+      useKeyOnly(fluid, "fluid"),
+      useKeyOnly(focus, "focus"),
+      useKeyOnly(inverted, "inverted"),
+      useKeyOnly(loading, "loading"),
+      useKeyOnly(transparent, "transparent"),
+      useValueAndKey(actionPosition, "action") || useKeyOnly(action, "action"),
+      useValueAndKey(iconPosition, "icon") ||
+        useKeyOnly(icon || loading, "icon"),
+      useValueAndKey(labelPosition, "labeled") || useKeyOnly(label, "labeled"),
+      "input",
+      className
     );
     const currencySymbol = getSymbolFromCurrency(currency);
     return (
       <div className={classes}>
         <Label basic>{currencySymbol}</Label>
-        <input {...this.allowedProps()}
+        <input
+          {...this.allowedProps()}
           value={this.handleValue()}
-          ref={input => this.input = this.handleInputRef(input)}
-          onChange={ ev => this.handleChange(ev) }
-          onBlur={ ev => this.handleBlur(ev) }
-          onFocus={ ev => this.handleFocus(ev) }
-          onKeyUp={ ev => this.handleKeyPress(ev) }
+          ref={input => (this.input = this.handleInputRef(input))}
+          onChange={ev => this.handleChange(ev)}
+          onBlur={ev => this.handleBlur(ev)}
+          onFocus={ev => this.handleFocus(ev)}
+          onKeyUp={ev => this.handleKeyPress(ev)}
         />
       </div>
     );
@@ -200,12 +216,12 @@ if (process.env.NODE_ENV !== "production") {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     onKeyPress: PropTypes.func,
-    max: PropTypes.number
+    max: PropTypes.number,
   };
 }
 
 IntlCurrencyInput.defaultProps = {
-  currency: 'EUR',
+  currency: "EUR",
   config: defaultConfig,
   autoFocus: false,
   autoSelect: false,

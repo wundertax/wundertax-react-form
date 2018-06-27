@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
+import React, { Component } from "react";
+import { Button } from "semantic-ui-react";
 import { fields } from "./Fields";
 import { widgets } from "./Widgets";
-import { ArrayFieldTemplate, FieldTemplate, ObjectFieldTemplate } from "./Templates";
+import {
+  ArrayFieldTemplate,
+  FieldTemplate,
+  ObjectFieldTemplate,
+} from "./Templates";
 import Form from "react-jsonschema-form";
 
-
 class WunderForm extends Component {
-
   static defaultProps = {
     uiSchema: {},
     noValidate: false,
@@ -17,7 +19,7 @@ class WunderForm extends Component {
     fields: fields,
     widgets: widgets,
     showErrorList: false,
-    className: 'ui form',
+    className: "ui form",
     ArrayFieldTemplate: ArrayFieldTemplate,
     FieldTemplate: FieldTemplate,
     ObjectFieldTemplate: ObjectFieldTemplate,
@@ -27,13 +29,9 @@ class WunderForm extends Component {
     const props = this.props;
     const children = props.children;
     return (
-        <Form {...props}>
-          {children ? (
-            children
-          ) : (
-            <Button type="submit">Submit</Button>
-          )}
-        </Form>
+      <Form {...props}>
+        {children ? children : <Button type="submit">Submit</Button>}
+      </Form>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TextArea } from 'semantic-ui-react';
+import { TextArea } from "semantic-ui-react";
 
 function TextareaWidget(props) {
   const {

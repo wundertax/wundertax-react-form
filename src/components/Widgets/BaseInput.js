@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Input } from 'semantic-ui-react';
+import { Input } from "semantic-ui-react";
 
 function BaseInput(props) {
   // Note: since React 15.2.0 we can't forward unknown element attributes, so we
@@ -40,9 +40,10 @@ function BaseInput(props) {
       iconPosition={iconPosition}
       onChange={_onChange}
       onBlur={onBlur && (event => onBlur(inputProps.id, event.target.value))}
-      onFocus={onFocus && (event => onFocus(inputProps.id, event.target.value))}
-    >
-      { children }
+      onFocus={
+        onFocus && (event => onFocus(inputProps.id, event.target.value))
+      }>
+      {children}
       <input />
     </Input>
   );
@@ -71,7 +72,7 @@ if (process.env.NODE_ENV !== "production") {
     onFocus: PropTypes.func,
     fluid: PropTypes.bool,
     children: PropTypes.node,
-    iconPosition: PropTypes.string
+    iconPosition: PropTypes.string,
   };
 }
 

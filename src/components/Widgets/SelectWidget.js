@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { asNumber } from "react-jsonschema-form/lib/utils";
 
-import { Select } from 'semantic-ui-react';
+import { Select } from "semantic-ui-react";
 
 /**
  * This is a silly limitation in the DOM where option change event values are
@@ -24,7 +24,6 @@ function processValue({ type, items }, value) {
   }
   return value;
 }
-
 
 function SelectWidget(props) {
   const {
@@ -73,7 +72,7 @@ function SelectWidget(props) {
       }}
       placeholder={placeholder}
       options={semanticOptions}
-      />
+    />
   );
 }
 

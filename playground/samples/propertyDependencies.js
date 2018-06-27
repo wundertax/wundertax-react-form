@@ -54,18 +54,22 @@ module.exports = {
   uiSchema: {
     unidirectional: {
       credit_card: {
-        "ui:help": "If you enter anything here then billing_address will become required."
+        "ui:help":
+          "If you enter anything here then billing_address will become required.",
       },
       billing_address: {
-        "ui:help": "It’s okay to have a billing address without a credit card number."
+        "ui:help":
+          "It’s okay to have a billing address without a credit card number.",
       },
     },
     bidirectional: {
       credit_card: {
-        "ui:help": "If you enter anything here then billing_address will become required"
+        "ui:help":
+          "If you enter anything here then billing_address will become required",
       },
       billing_address: {
-        "ui:help": "If you enter anything here then credit_card will become required."
+        "ui:help":
+          "If you enter anything here then credit_card will become required.",
       },
     },
   },

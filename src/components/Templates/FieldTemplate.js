@@ -1,13 +1,12 @@
-import React from 'react';
-import { Container, Form, Label } from 'semantic-ui-react';
-
+import React from "react";
+import { Container, Form, Label } from "semantic-ui-react";
 
 function cleanBootstrapClasses(classNames) {
   let response = classNames;
   const replacements = [
-    ['field', ''],
-    ['form-group', ''],
-    ['has-error', 'error']
+    ["field", ""],
+    ["form-group", ""],
+    ["has-error", "error"],
   ];
   replacements.forEach(function(key, value) {
     response = response.replace(key, value);
@@ -16,7 +15,6 @@ function cleanBootstrapClasses(classNames) {
 }
 
 function FieldTemplate(props) {
-
   const {
     id,
     label,
@@ -37,19 +35,29 @@ function FieldTemplate(props) {
   let errors = null;
   let help = null;
   if (rawHelp !== undefined) {
-    help = <Container> { rawHelp } </Container>;
+    help = <Container> {rawHelp} </Container>;
   }
   if (rawErrors !== undefined) {
-    errors = <Label basic color='red' pointing='above'> { rawErrors.join(', ') } </Label>;
-    classNames = classNames.replace('has-error', 'error');
+    errors = (
+      <Label basic color="red" pointing="above">
+        {" "}
+        {rawErrors.join(", ")}{" "}
+      </Label>
+    );
+    classNames = classNames.replace("has-error", "error");
   }
   return (
     <Form.Field className={classNames}>
-      { displayLabel && <label htmlFor={id}>{label}{required ? "*" : null}</label>}
-      { displayLabel && description ? description : null }
+      {displayLabel && (
+        <label htmlFor={id}>
+          {label}
+          {required ? "*" : null}
+        </label>
+      )}
+      {displayLabel && description ? description : null}
       {children}
-      { errors }
-      { help }
+      {errors}
+      {help}
     </Form.Field>
   );
 }

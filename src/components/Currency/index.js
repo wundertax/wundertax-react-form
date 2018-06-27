@@ -1,3 +1,3 @@
-import { default as IntlCurrencyInput } from './Input';
+import { default as IntlCurrencyInput } from "./Input";
 
 export { IntlCurrencyInput };

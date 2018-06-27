@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import { createFormComponent, createSandbox } from "./test_utils";
 
-
 describe("Form", () => {
   let sandbox;
 
@@ -31,7 +30,5 @@ describe("Form", () => {
 
       expect(node.querySelectorAll("button[type=submit]")).to.have.length.of(1);
     });
-
   });
-
 });

@@ -31,8 +31,7 @@
   "lint-staged": {
     "{playground,src,test}/**/*.js": [
       "npm run lint",
-      "npm run cs-format",
-      "git add"
+      "npm run cs-format"
     ]
   },
   "main": "lib/index.js",

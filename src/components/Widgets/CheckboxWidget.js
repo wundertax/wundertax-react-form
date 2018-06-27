@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Checkbox } from 'semantic-ui-react';
+import { Container, Checkbox } from "semantic-ui-react";
 
 function CheckboxWidget(props) {
   const {
@@ -17,11 +17,13 @@ function CheckboxWidget(props) {
   return (
     <Container className={`checkbox ${disabled || readonly ? "disabled" : ""}`}>
       {schema.description && (
-        <p id={id}><small>{schema.description}</small></p>
+        <p id={id}>
+          <small>{schema.description}</small>
+        </p>
       )}
-      <Checkbox 
-        id={id} 
-        label={label} 
+      <Checkbox
+        id={id}
+        label={label}
         // value={typeof value === "undefined" ? false : true}
         defaultChecked={typeof value === "undefined" ? false : value}
         required={typeof required === "undefined" ? false : true}

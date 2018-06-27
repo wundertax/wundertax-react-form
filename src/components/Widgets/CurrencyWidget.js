@@ -2,11 +2,9 @@ import React from "react";
 import { IntlCurrencyInput } from "../Currency";
 import PropTypes from "prop-types";
 
-
 const style = {
-  textAlign: 'right'
+  textAlign: "right",
 };
-
 
 function CurrencyWidget(props) {
   const {
@@ -26,7 +24,7 @@ function CurrencyWidget(props) {
     registry,
     ...inputProps
   } = props;
-  inputProps.type = options.inputType || inputProps.type || 'text';
+  inputProps.type = options.inputType || inputProps.type || "text";
   inputProps.label = undefined;
   const useCurrency = options.currency || currency;
   const _onChange = (event, value, maskedValue) => {
@@ -51,13 +49,13 @@ function CurrencyWidget(props) {
 }
 
 CurrencyWidget.defaultProps = {
-  type: 'text',
+  type: "text",
   required: false,
   disabled: false,
   readonly: false,
   autofocus: false,
   fluid: false,
-  currency: 'EUR',
+  currency: "EUR",
 };
 
 if (process.env.NODE_ENV !== "production") {
@@ -74,7 +72,7 @@ if (process.env.NODE_ENV !== "production") {
     onFocus: PropTypes.func,
     fluid: PropTypes.bool,
     children: PropTypes.node,
-    currency: PropTypes.string
+    currency: PropTypes.string,
   };
 }
 

@@ -6,4 +6,4 @@ export {
   useTextAlignProp,
   useVerticalAlignProp,
   useWidthProp,
-} from './classNameBuilders';
+} from "./classNameBuilders";

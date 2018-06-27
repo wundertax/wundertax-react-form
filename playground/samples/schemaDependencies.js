@@ -5,7 +5,8 @@ module.exports = {
     type: "object",
     properties: {
       simple: {
-        src: "https://spacetelescope.github.io/understanding-json-schema/reference/object.html#dependencies",
+        src:
+          "https://spacetelescope.github.io/understanding-json-schema/reference/object.html#dependencies",
         title: "Simple",
         type: "object",
         properties: {
@@ -107,7 +108,8 @@ module.exports = {
   uiSchema: {
     simple: {
       credit_card: {
-        "ui:help": "If you enter anything here then billing_address will be dynamically added to the form.",
+        "ui:help":
+          "If you enter anything here then billing_address will be dynamically added to the form.",
       },
     },
     conditional: {

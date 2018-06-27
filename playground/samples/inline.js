@@ -5,28 +5,27 @@ module.exports = {
     properties: {
       workEmail: {
         type: "string",
-        title: "Work Email"
+        title: "Work Email",
       },
       personalEmail: {
         type: "string",
-        title: "Personal Email"
-      }
+        title: "Personal Email",
+      },
     },
   },
   uiSchema: {
     "ui:options": {
-      "inline": true
+      inline: true,
     },
     workEmail: {
-      "ui:widget": "email"
+      "ui:widget": "email",
     },
     personalEmail: {
       "ui:widget": "email",
       "ui:title": "Email pessoal",
       "ui:description": "Adding a text here to show how text breaks",
-      "ui:icon": "envelope"
-    }
+      "ui:icon": "envelope",
+    },
   },
-  formData: {
-  },
+  formData: {},
 };

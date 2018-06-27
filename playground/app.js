@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import { Container, Grid, Menu, Dropdown } from 'semantic-ui-react';
+import { Container, Grid, Menu, Dropdown } from "semantic-ui-react";
 import CodeMirror from "react-codemirror2";
 import "codemirror/mode/javascript/javascript";
 import { shouldRender } from "react-jsonschema-form/lib/utils";
@@ -14,14 +14,14 @@ const log = type => console.log.bind(console, type);
 const fromJson = json => JSON.parse(json);
 const toJson = val => JSON.stringify(val, null, 2);
 
-const liveValidateSchema = { 
+const liveValidateSchema = {
   type: "boolean",
-  title: "Live validation"
+  title: "Live validation",
 };
 
 const displayJsonSchema = {
   type: "boolean",
-  title: "Display Editors?"
+  title: "Display Editors?",
 };
 
 const cmOptions = {
@@ -99,12 +99,15 @@ class Selector extends Component {
 
   render() {
     return (
-      <Dropdown text='Examples' pointing>
+      <Dropdown text="Examples" pointing>
         <Dropdown.Menu>
           {Object.keys(samples).map((label, i) => {
             return (
-              <Dropdown.Item key={i} active={this.state.current === label ? true : undefined} onClick={this.onLabelClick(label)}>
-                  {label}
+              <Dropdown.Item
+                key={i}
+                active={this.state.current === label ? true : undefined}
+                onClick={this.onLabelClick(label)}>
+                {label}
               </Dropdown.Item>
             );
           })}
@@ -115,7 +118,6 @@ class Selector extends Component {
 }
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     // initialize state with Simple data sample
@@ -133,8 +135,8 @@ class App extends Component {
       shareURL: null,
       columns: {
         editors: 10,
-        form: 6
-      }
+        form: 6,
+      },
     };
   }
 
@@ -159,7 +161,7 @@ class App extends Component {
     this.setState({ form: false }, _ =>
       this.setState({
         ...data,
-        form: true
+        form: true,
       })
     );
   };
@@ -170,16 +172,18 @@ class App extends Component {
 
   onFormDataEdited = formData => this.setState({ formData, shareURL: null });
 
-  setDisplayJsonSchema = ({ formData }) => this.setState(
-    { displayJson: formData, columns: { editors: formData ? 10 : 0, form: formData ? 6 : 16 } }
-  );
+  setDisplayJsonSchema = ({ formData }) =>
+    this.setState({
+      displayJson: formData,
+      columns: { editors: formData ? 10 : 0, form: formData ? 6 : 16 },
+    });
 
   setLiveValidate = ({ formData }) => this.setState({ liveValidate: formData });
 
-  onFormDataChange = ({ formData }) => this.setState({ formData, shareURL: null });
+  onFormDataChange = ({ formData }) =>
+    this.setState({ formData, shareURL: null });
 
   render() {
-
     const {
       schema,
       uiSchema,
@@ -192,21 +196,21 @@ class App extends Component {
     } = this.state;
 
     return (
-      <Grid container stackable verticalAlign='top'>
+      <Grid container stackable verticalAlign="top">
         <Grid.Row>
           <Grid.Column width={16}>
-             <Menu fixed='top'>
-                <Container>
-                  <Menu.Item header>Wundertax React Form</Menu.Item>
-                  <Menu.Item>
-                    <Selector onSelected={this.load} />
-                  </Menu.Item>
-                </Container>
-             </Menu>
+            <Menu fixed="top">
+              <Container>
+                <Menu.Item header>Wundertax React Form</Menu.Item>
+                <Menu.Item>
+                  <Selector onSelected={this.load} />
+                </Menu.Item>
+              </Container>
+            </Menu>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column width={8} style={{ marginTop: '2em' }}>
+          <Grid.Column width={8} style={{ marginTop: "2em" }}>
             <Form
               liveValidate={false}
               idPrefix={"validation_form"}
@@ -216,7 +220,7 @@ class App extends Component {
               <div />
             </Form>
           </Grid.Column>
-          <Grid.Column width={8} floated='right' style={{ marginTop: '2em' }}>
+          <Grid.Column width={8} floated="right" style={{ marginTop: "2em" }}>
             <Form
               liveValidate={false}
               idPrefix={"editors_form"}
@@ -228,8 +232,8 @@ class App extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={16}>
-          { this.state.displayJson && (
-            <Grid.Column width={ this.state.columns.editors }>
+          {this.state.displayJson && (
+            <Grid.Column width={this.state.columns.editors}>
               <Grid stackable>
                 <Grid.Row>
                   <Grid.Column width={16}>
@@ -261,30 +265,29 @@ class App extends Component {
                 </Grid.Row>
               </Grid>
             </Grid.Column>
-            )
-          }
-          <Grid.Column floated='right' width={ this.state.columns.form }>
-          {this.state.form && (
-            <Form
-              liveValidate={liveValidate}
-              schema={ schema }
-              uiSchema={ uiSchema }
-              formData={ formData }
-              onChange={this.onFormDataChange}
-              onSubmit={({ formData }) =>
-                console.log("submitted formData", formData)
-              }
-              validate={validate}
-              onBlur={(id, value) =>
-                console.log(`Touched ${id} with value ${value}`)
-              }
-              onFocus={(id, value) =>
-                console.log(`Focused ${id} with value ${value}`)
-              }
-              transformErrors={transformErrors}
-              onError={log("errors")}
-            ></Form>
           )}
+          <Grid.Column floated="right" width={this.state.columns.form}>
+            {this.state.form && (
+              <Form
+                liveValidate={liveValidate}
+                schema={schema}
+                uiSchema={uiSchema}
+                formData={formData}
+                onChange={this.onFormDataChange}
+                onSubmit={({ formData }) =>
+                  console.log("submitted formData", formData)
+                }
+                validate={validate}
+                onBlur={(id, value) =>
+                  console.log(`Touched ${id} with value ${value}`)
+                }
+                onFocus={(id, value) =>
+                  console.log(`Focused ${id} with value ${value}`)
+                }
+                transformErrors={transformErrors}
+                onError={log("errors")}
+              />
+            )}
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -292,7 +295,4 @@ class App extends Component {
   }
 }
 
-render(
-  <App />, 
-  document.getElementById("app")
-);
+render(<App />, document.getElementById("app"));
