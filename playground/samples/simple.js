@@ -39,6 +39,10 @@ module.exports = {
         type: "string",
         title: "Country",
       },
+      amount: {
+        type: "string",
+        title: "Amount",
+      },
       telephone: {
         type: "string",
         title: "Telephone",
@@ -73,6 +77,10 @@ module.exports = {
       "ui:widget": "CountryWidget",
       "ui:placeholder": "Germany"
     },
+    amount: {
+      "ui:widget": "CurrencyWidget",
+      "ui:currency": "USD"
+    },
     telephone: {
       "ui:options": {
         inputType: "tel",
@@ -87,5 +95,6 @@ module.exports = {
     bio: "Moving Making, one planet at the time.",
     password: "mars_or_die",
     country: "us",
+    amount: "42.12"
   },
 };
