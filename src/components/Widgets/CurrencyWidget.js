@@ -21,20 +21,24 @@ function CurrencyWidget(props) {
     schema,
     formContext,
     currency,
+    locale,
     registry,
     ...inputProps
   } = props;
   inputProps.type = options.inputType || inputProps.type || "text";
   inputProps.label = undefined;
   const useCurrency = options.currency || currency;
+  const useLocale = options.locale || locale;
   const _onChange = (event, value, maskedValue) => {
     return props.onChange(value === "" ? options.emptyValue : value.toString());
   };
+  const config = useLocale ? { locale: useLocale } : undefined;
   const { rawErrors, ...cleanProps } = inputProps;
   const hasErrors = rawErrors !== undefined ? true : undefined;
   return (
     <IntlCurrencyInput
       style={style}
+      config={config}
       currency={useCurrency}
       error={hasErrors}
       disabled={disabled}
@@ -55,6 +59,7 @@ CurrencyWidget.defaultProps = {
   readonly: false,
   autofocus: false,
   fluid: false,
+  locale: "en-US",
   currency: "EUR",
 };
 
@@ -72,7 +77,8 @@ if (process.env.NODE_ENV !== "production") {
     onFocus: PropTypes.func,
     fluid: PropTypes.bool,
     children: PropTypes.node,
-    currency: PropTypes.string,
+    locale: PropTypes.string.isRequired,
+    currency: PropTypes.string.isRequired,
   };
 }
 

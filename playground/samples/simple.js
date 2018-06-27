@@ -88,6 +88,7 @@ module.exports = {
     amount: {
       "ui:widget": "CurrencyWidget",
       "ui:currency": "USD",
+      "ui:locale": "en-US",
     },
     accept: {
       "ui:widget": "checkbox",
