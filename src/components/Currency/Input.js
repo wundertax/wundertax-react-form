@@ -168,7 +168,7 @@ class IntlCurrencyInput extends Component {
       size,
       transparent,
     } = this.props;
-    const labelPosition = "right";
+    const labelPosition = "left";
     const classes = cx(
       "ui",
       size,
