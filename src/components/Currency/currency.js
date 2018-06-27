@@ -194,6 +194,8 @@ export function formatCurrency(value, localeConfig, currencyName) {
   const numberConfig = {
     style: "decimal",
     currency: currencyName,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   };
   const formatter = new global.Intl.NumberFormat(
     localeConfig.locale,

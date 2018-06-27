@@ -79,7 +79,6 @@ class IntlCurrencyInput extends Component {
 
   handleChange(event) {
     event.preventDefault();
-
     const [value, maskedValue] = this.updateValues(event);
 
     if (this.props.onChange && maskedValue) {
