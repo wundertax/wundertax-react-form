@@ -17,8 +17,11 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: lint
+          name: Linting
           command: npm run lint
       - run:
-          name: test
+          name: Test package
           command: npm run test
+      - run:
+          name: Code Style check
+          command: npm run cs-check
