@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "deepcopy": "^0.6.3",
+    "react-phone-input-2": "^2.4.0",
     "selectn": "^1.1.2"
   },
   "devDependencies": {

@@ -52,6 +52,10 @@ module.exports = {
         title: "Telephone",
         minLength: 10,
       },
+      mobile: {
+        type: "string",
+        title: "Mobile",
+      },
     },
   },
   uiSchema: {
@@ -100,6 +104,9 @@ module.exports = {
       "ui:options": {
         inputType: "tel",
       },
+    },
+    mobile: {
+      "ui:widget": "PhoneWidget",
     },
   },
   formData: {
